@@ -9,5 +9,5 @@ Simple Api to handle GitHub webhooks and redirect them beautiful to Discord
  
 Now you're good to go :) 
  
-# Licence
- - MIT Licence
+# LICENSE
+ - MIT LICENSE
