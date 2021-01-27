@@ -10,10 +10,10 @@ router.post('/', (req, res, next) => {
         const event = {
             action: req.headers["x-github-event"],
             name: req.body.repository.name,
-            url: req.body.repository.url,
+            url: req.body.repository["html_url"],
             sender: req.body.sender.login,
-            senderImage: req.body.sender.avatar_url,
-            senderLink: req.body.sender.html_url
+            senderImage: req.body.sender["avatar_url"],
+            senderLink: req.body.sender["html_url"]
         }
         var embed;
         if(event.action != null || event.action != undefined){
@@ -23,22 +23,26 @@ router.post('/', (req, res, next) => {
                          embed = new MessageBuilder()
                         .setTitle(event.action)
                         .setAuthor(event.sender, event.senderImage, event.senderLink)
-                        .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
+                        .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ')
+                        .setUrl(event.url);
                     }else {
                          embed = new MessageBuilder()
                          .setTitle(event.action)
                          .setAuthor(event.sender, event.senderImage)
-                         .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
+                         .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' )
+                         .setUrl(event.url);
                     }
                 }else {
                      embed = new MessageBuilder()
                      .setTitle(event.action)
-                     .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
+                     .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ')
+                     .setUrl(event.url);
                 }
             } else {
                  embed = new MessageBuilder()
                  .setTitle(event.action)
-                 .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ' + event.url);
+                 .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ')
+                 .setUrl(event.url);
             } 
         } else {
             console.log(event.action);
