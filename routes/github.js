@@ -21,23 +21,23 @@ router.post('/', (req, res, next) => {
                 if(event.senderImage != null || event.senderImage != undefined){
                     if(event.senderLink != null || event.senderLink != undefined){
                          embed = new MessageBuilder()
-                        .setTitle(event.action)
+                        .setTitle(event.action.toUpperCase() + ' at: ' + event.url)
                         .setAuthor(event.sender, event.senderImage, event.senderLink)
-                        .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
+                        .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out!');
                     }else {
                          embed = new MessageBuilder()
-                         .setTitle(event.action)
+                         .setTitle(event.action.toUpperCase() + ' at: ' + event.url)
                          .setAuthor(event.sender, event.senderImage)
                          .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                     }
                 }else {
                      embed = new MessageBuilder()
-                     .setTitle(event.action)
+                     .setTitle(event.action.toUpperCase() + ' at: ' + event.url)
                      .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                 }
             } else {
                  embed = new MessageBuilder()
-                 .setTitle(event.action)
+                 .setTitle(event.action.toUpperCase() + ' at: ' + event.url)
                  .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ' + event.url);
             } 
         } else {
