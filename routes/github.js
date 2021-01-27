@@ -8,7 +8,7 @@ hook.setUsername('GitHub Reporter'); // Can be replaced by any other funny name
 router.post('/', (req, res, next) => {
     try{
         const event = {
-            action: req.body.action,
+            action: req.headers["x-github-event"],
             name: req.body.repository.name,
             url: req.body.repository.url,
             sender: req.body.sender.login,

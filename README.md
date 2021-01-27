@@ -1,7 +1,7 @@
 # Github-Webhook
 Simple Api to handle GitHub webhooks and redirect them beautiful to Discord
 
-# Gettings started:
+# Getting started:
  - Clone the Repository on your Server
  - Go to /routes/github.js and insert your Webhook URL
  - In your Firewall Settings of the Server open Port 3000 which is required for the API
