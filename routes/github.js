@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Webhook, MessageBuilder } = require('discord-webhook-node');
 const hook = new Webhook('');
-const IMAGE_URL = '../images/GitHub-Mark-120px-plus.png';
+const image = '../images/GitHub-Mark-120px-plus.png';
 hook.setUsername('GitHub Reporter'); // Can be replaced by any other funny name
 
 
@@ -34,13 +34,11 @@ router.post('/', (req, res, next) => {
                 }else {
                      embed = new MessageBuilder()
                      .setTitle(event.action)
-                     .setAuthor('GitHub Reporter', IMAGE_URL)
                      .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ' + event.url);
                 }
             } else {
                  embed = new MessageBuilder()
                  .setTitle(event.action)
-                 .setAuthor('GitHub Reporter', IMAGE_URL)
                  .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ' + event.url);
             } 
         } else {
