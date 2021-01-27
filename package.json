@@ -1,0 +1,27 @@
+{
+  "name": "github-webhook",
+  "version": "1.0.0",
+  "description": "Just A simple API to handle GithubWebhooks and send them to Discord ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "webhook",
+    "discord"
+  ],
+  "author": "jxstxn",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "discord-webhook-node": "^1.1.8",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "http": "0.0.1-security",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  }
+}
