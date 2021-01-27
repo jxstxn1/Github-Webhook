@@ -24,17 +24,17 @@ router.post('/', (req, res, next) => {
                          embed = new MessageBuilder()
                         .setTitle(event.action)
                         .setAuthor(event.sender, event.senderImage, event.senderLink)
-                        .setFooter('Hey! ' + event.sender + ' did ' + event.action + ' on your repository: ' + event.name + ' go check it out at: ' + event.url);
+                        .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                     }else {
                          embed = new MessageBuilder()
                          .setTitle(event.action)
                          .setAuthor(event.sender, event.senderImage)
-                         .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ' + event.url);
+                         .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                     }
                 }else {
                      embed = new MessageBuilder()
                      .setTitle(event.action)
-                     .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ' + event.url);
+                     .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                 }
             } else {
                  embed = new MessageBuilder()
