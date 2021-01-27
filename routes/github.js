@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Webhook, MessageBuilder } = require('discord-webhook-node');
-const hook = new Webhook('');
-const image = '../images/GitHub-Mark-120px-plus.png';
+const hook = new Webhook(''); // Insert your hook link here which you got from Discord
 hook.setUsername('GitHub Reporter'); // Can be replaced by any other funny name
 
 
