@@ -23,26 +23,22 @@ router.post('/', (req, res, next) => {
                          embed = new MessageBuilder()
                         .setTitle(event.action)
                         .setAuthor(event.sender, event.senderImage, event.senderLink)
-                        .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ')
-                        .setUrl(event.url);
+                        .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                     }else {
                          embed = new MessageBuilder()
                          .setTitle(event.action)
                          .setAuthor(event.sender, event.senderImage)
-                         .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' )
-                         .setUrl(event.url);
+                         .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                     }
                 }else {
                      embed = new MessageBuilder()
                      .setTitle(event.action)
-                     .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ')
-                     .setUrl(event.url);
+                     .setFooter('Hey! ' + event.sender + ' did action: "' + event.action + '" on your repository: ' + event.name + ' go check it out at: ' + event.url);
                 }
             } else {
                  embed = new MessageBuilder()
                  .setTitle(event.action)
-                 .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ')
-                 .setUrl(event.url);
+                 .setFooter('Hey! Something changed on your repository which I cant handle yet: ' + event.name + ' go check it out at: ' + event.url);
             } 
         } else {
             console.log(event.action);
@@ -56,9 +52,11 @@ router.post('/', (req, res, next) => {
             .setText('Hey! Someone did Something what we didnt handle at the moment');
             
         }
+
         hook.send(embed);
         res.status(200).json({
-            message: 'Everything worked fine'
+            message: 'Everything worked fine',
+            messageSendToDiscord: JSON.stringify(embed)
         })
     } catch (err){
         console.error(err);
